@@ -1,0 +1,84 @@
+/* carrusel */
+.homeCarouselImage{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+
+@media (max-width: 520px){
+    .homeCarouselImage{
+        width: 100%;
+    }
+
+};
+
+/* carrusel */
+
+/* no tocar, se rompe el css*/
+#luxDesignNavBar{
+    margin-bottom: 10px;
+}
+/* no tocar, se rompe el css*/
+
+/* about us img */
+@media (max-width: 990px){
+    #aboutUsLuxDesignImage{
+        display: none;
+    }
+}
+/* about us img */
+
+/* no tocar, se rompe el css*/
+.navbar{
+    margin-bottom: 20px;
+}
+/* no tocar, se rompe el css*/
+
+/* para las imagenes */
+img.hover-shadow {
+    transition: 0.3s;
+  }
+  
+  .hover-shadow:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+.carruselBadge{
+    position: absolute;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+/* para las imagenes */
+
+/* BUTTONSSSS */
+.editButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.deleteButton{
+    text-align: end;
+    margin-top: 50px;
+}
+/* BUTTONSSSS */
+
+/* delete prompt */
+.deletePrompt{
+    display: none;
+
+    position: sticky;
+    top: 0;
+
+    border: 2px black solid;
+    border-radius: 5px;
+    padding: 5px;
+    
+}
+
+.deletePromptButtons{
+    display: flex;
+    justify-content: space-between;
+}
+/* delete prompt */
