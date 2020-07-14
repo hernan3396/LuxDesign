@@ -31,8 +31,26 @@ class trabajoController extends Controller
     {
         $trabajo = Trabajo::create($request->all());
 
-        $path = $request->file('imagen')->store('img/', 'public');
-        $trabajo->imagen = $path;
+        //get filename with extension
+        $filenamewithextension = $request->file('imagen')->getClientOriginalName();
+ 
+        //get filename without extension
+        $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
+     
+        //get file extension
+        $extension = $request->file('imagen')->getClientOriginalExtension();
+
+        //filename to store
+        $filenametostore = $filename.'_'.time().'.'.$extension;
+         
+        //Upload File to s3
+        Storage::disk('s3')->put('trabajos/' .$filenametostore, fopen($request->file('imagen'), 'r+'), 'public');
+     
+        //Store $filenametostore in the database
+
+        $trabajo->imagen = $filenametostore;
+
+
         $trabajo->save();
         
         return redirect('admin/trabajos')->with('mensaje', "Se ha creado con exito el trabajo $trabajo->nombre ");
@@ -55,9 +73,24 @@ class trabajoController extends Controller
         $trabajo->update($request->all());
 
         if ($request->hasFile('imagen')) {
-            Storage::delete($trabajo->imagen, 'public');
-            $path = $request->file('imagen')->store('img/', 'public');
-            $trabajo->imagen = $path;
+            //get filename with extension
+            $filenamewithextension = $request->file('imagen')->getClientOriginalName();
+    
+            //get filename without extension
+            $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
+        
+            //get file extension
+            $extension = $request->file('imagen')->getClientOriginalExtension();
+
+            //filename to store
+            $filenametostore = $filename.'_'.time().'.'.$extension;
+            
+            //Upload File to s3
+            Storage::disk('s3')->put('trabajos/' .$filenametostore, fopen($request->file('imagen'), 'r+'), 'public');
+        
+            //Store $filenametostore in the database
+
+            $trabajo->imagen = $filenametostore;
             $trabajo->save();
         }
 

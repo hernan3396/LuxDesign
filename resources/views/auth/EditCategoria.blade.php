@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('title')
-    Editar categoria
+Editar categoria
 @endsection
 
 @section('content')
@@ -31,7 +31,7 @@
         </div>
 
         <div>
-            <img src="{{ Storage::url($categoria->imagen) }}" alt="" style="height: 200px">
+            <img src="{{ Storage::disk('s3')->url('categorias/' . $categoria->imagen) }}" alt="" style="height: 200px">
         </div>
 
         <div class="form-group">

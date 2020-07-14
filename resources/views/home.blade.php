@@ -15,7 +15,8 @@ Home
 
   <div class="carousel-inner homeCarousel">
     <div class="carousel-item active">
-      <img class="d-block homeCarouselImage" src="{{ Storage::url($primerTrabajo->imagen) }}" alt="First slide">
+      <img class="d-block homeCarouselImage" src="{{ Storage::disk('s3')->url('trabajos/' . $primerTrabajo->imagen) }}"
+        alt="First slide">
       <div class="carousel-caption d-none d-md-block">
         <a href="{{ url("/trabajos/". $primerTrabajo->workType->workType )}}"
           style='color : white; display : inline-block;'>
@@ -28,10 +29,10 @@ Home
     @foreach ($trabajos as $trabajo)
     @if ($trabajo->id != $primerTrabajo->id)
     <div class="carousel-item">
-      <img class="d-block homeCarouselImage" src="{{ Storage::url($trabajo->imagen) }}" alt="Slide">
+      <img class="d-block homeCarouselImage" src="{{ Storage::disk('s3')->url('trabajos/' . $trabajo->imagen) }}"
+        alt="Slide">
       <div class="carousel-caption d-none d-md-block">
-        <a href="{{ url("/trabajos/". $trabajo->workType->workType )}}"
-          style='color : white; display : inline-block;'>
+        <a href="{{ url("/trabajos/". $trabajo->workType->workType )}}" style='color : white; display : inline-block;'>
           <h5>{{ $trabajo->nombre }}</h5>
         </a>
         <p>{{ $trabajo->descripcion }}</p>

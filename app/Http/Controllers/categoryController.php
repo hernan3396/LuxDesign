@@ -25,8 +25,28 @@ class categoryController extends Controller
     {
         $categoria = WorkType::create($request->all());
 
-        $path = $request->file('imagen')->store('img/categoria', 'public');
-        $categoria->imagen = $path;
+
+        // $path = $request->file('imagen')->store('categorias', 's3');
+        // $path = Storage::disk('s3')->put('/categorias', $request->file);
+
+        //get filename with extension
+        $filenamewithextension = $request->file('imagen')->getClientOriginalName();
+ 
+        //get filename without extension
+        $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
+         
+        //get file extension
+        $extension = $request->file('imagen')->getClientOriginalExtension();
+         
+        //filename to store
+        $filenametostore = $filename.'_'.time().'.'.$extension;
+         
+        //Upload File to s3
+        Storage::disk('s3')->put('categorias/' .$filenametostore, fopen($request->file('imagen'), 'r+'), 'public');
+         
+        //Store $filenametostore in the database
+
+        $categoria->imagen = $filenametostore;
         $categoria->save();
 
         return redirect('admin/categorias')->with('mensaje', "La categoria $categoria->workType se ha creado con exito");
@@ -35,7 +55,7 @@ class categoryController extends Controller
     public function showEditCategoria($id)
     {
         $categoria = WorkType::find($id);
-        return view('auth/EditCategoria', ['categoria' => $categoria]);
+        return view('auth/editCategoria', ['categoria' => $categoria]);
     }
 
 
@@ -46,10 +66,24 @@ class categoryController extends Controller
         $categoria->update($request->all());
 
         if ($request->hasFile('imagen')) {
-            Storage::delete($categoria->imagen, 'public');
-            
-            $path = $request->file('imagen')->store('img/categorias', 'public');
-            $categoria->imagen = $path;
+            //get filename with extension
+            $filenamewithextension = $request->file('imagen')->getClientOriginalName();
+ 
+            //get filename without extension
+            $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
+     
+            //get file extension
+            $extension = $request->file('imagen')->getClientOriginalExtension();
+     
+            //filename to store
+            $filenametostore = $filename.'_'.time().'.'.$extension;
+     
+            //Upload File to s3
+            Storage::disk('s3')->put('categorias/' .$filenametostore, fopen($request->file('imagen'), 'r+'), 'public');
+     
+            //Store $filenametostore in the database
+
+            $categoria->imagen = $filenametostore;
             $categoria->save();
         }
 
@@ -63,7 +97,9 @@ class categoryController extends Controller
         foreach ($trabajos as $trabajo) {
             $trabajo->delete();
         }
-        
+
+        // si en un futuro es problema agregar que esto elimine las imagenes pero prefiero dejar que no lo haga asi hay un "backup"
+
         $categoria = WorkType::find($id);
         $categoria->delete();
         return redirect('admin/categorias')->with('mensaje', "La categoria $categoria->workType se ha eliminado exitosamente");

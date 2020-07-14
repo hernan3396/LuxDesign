@@ -30,8 +30,8 @@ Trabajos
         <div class="col-sm-4">
 
             <div class="card" style="width: 18rem; margin-bottom:10px; position:relative;   ">
-                <img class="card-img-top" src="{{ Storage::url($trabajo->imagen) }}" alt="{{ $trabajo->nombre }}"
-                    style="height: 200px">
+                <img class="card-img-top" src="{{ Storage::disk('s3')->url('trabajos/' . $trabajo->imagen) }}"
+                    alt="{{ $trabajo->nombre }}" style="height: 200px">
 
                 <div class="row" style="margin-bottom:5px;">
                     <div class="col-sm-8">

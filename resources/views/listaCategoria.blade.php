@@ -14,8 +14,9 @@ Trabajos
         <div class="col-sm-4" style="margin-bottom:5px">
 
             <div class="card" style="width: 18rem;">
-                <a href="/trabajos/{{ $workType->workType }}"><img class="card-img-top" src="{{ asset('storage/' . $workType->imagen) }}"
-                        alt="Card image cap" style="height: 180px"></a>
+                <a href="/trabajos/{{ $workType->workType }}"><img class="card-img-top"
+                        src="{{ Storage::disk('s3')->url('categorias/' . $workType->imagen) }}" alt="Card image cap"
+                        style="height: 180px"></a>
                 <div class="card-body">
                     <p class="card-text">{{ $workType->workType }}</p>
                 </div>

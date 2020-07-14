@@ -75,7 +75,8 @@ Editar trabajo
         </div>
 
         <div>
-            <img src="{{ Storage::url($trabajo->imagen) }}" alt="{{ $trabajo->nombre }}" style="height: 200px">
+            <img src="{{ Storage::disk('s3')->url('trabajos/' . $trabajo->imagen) }}" alt="{{ $trabajo->nombre }}"
+                style="height: 200px">
         </div>
 
         <div class="form-group">

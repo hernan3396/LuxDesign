@@ -23,8 +23,8 @@ Editar carrusel
 
             <div class="col-sm-4" style="margin-bottom: 5px">
 
-                <img src="{{ Storage::url($trabajo->imagen) }}" alt="{{ $trabajo->nombre }}" style="height: 200px"
-                    class="card-img-top hover-shadow">
+                <img src="{{ Storage::disk('s3')->url('trabajos/' . $trabajo->imagen) }}" alt="{{ $trabajo->nombre }}"
+                    style="height: 200px" class="card-img-top hover-shadow">
                 <p style="text-align: center">Posición:
                     <div class="form-group">
                         <input type="number" class="form-control" id="carrusel" placeholder="{{ $trabajo->carrusel }}"
