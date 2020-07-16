@@ -55,7 +55,7 @@ class categoryController extends Controller
     public function showEditCategoria($id)
     {
         $categoria = WorkType::find($id);
-        return view('auth/editCategoria', ['categoria' => $categoria]);
+        return view('auth/EditCategoria', ['categoria' => $categoria]);
     }
 
 
