@@ -64,28 +64,20 @@ Home
 <div class="row" style="justify-content: space-around; margin-left:0px; margin-right:0px">
   <div class="col-md-6">
     <div class="card mb-3">
-      <div class="card-header">
-        <h4><i class="fas fa-eye"></i> Trabajos</h4>
-      </div>
-      <div class="card-body">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in
-          alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum
-          quod?</p>
-        <a href="{{ url('/trabajos') }}" class="btn btn-outline-secondary">Ver trabajos</a>
-      </div>
+      <a href="{{ url('/trabajos') }}" class="btn btn-outline-secondary">
+        <div class="">
+          <h4><i class="fas fa-eye"></i> Trabajos</h4>
+        </div>
+      </a>
     </div>
   </div>
   <div class="col-md-6">
     <div class="card mb-3">
-      <div class="card-header">
-        <h4><i class="fas fa-address-card"></i> Sobre nosotros</h4>
-      </div>
-      <div class="card-body">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in
-          alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum
-          quod?</p>
-        <a href="{{url('/sobre-nosotros')}}" class="btn btn-outline-secondary">Ver mas</a>
-      </div>
+      <a href="{{url('/sobre-nosotros')}}" class="btn btn-outline-secondary">
+        <div class="">
+          <h4><i class="fas fa-address-card"></i> Sobre nosotros</h4>
+        </div>
+      </a>
     </div>
   </div>
 </div><!-- /.row -->
