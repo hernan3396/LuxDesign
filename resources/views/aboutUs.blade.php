@@ -16,7 +16,8 @@ Sobre nosotros
         <!-- Intro Content -->
         <div class="row">
             <div class="col-lg-2">
-                <img class="img-fluid rounded mb-4" id="aboutUsLuxDesignImage" src="{{ asset('Images\LuxDesignLogoLarge.jpg') }}" alt="">
+                <img class="img-fluid rounded mb-4" id="aboutUsLuxDesignImage"
+                    src="{{ asset('Images\LuxDesignLogoSmall.jpeg') }}" alt="">
             </div>
             <div class="col-lg-10">
                 <h2>Nuestra misión</h2>
@@ -34,8 +35,22 @@ Sobre nosotros
                 <p>Trabajamos con excelente nivel de acabado final, utilizamos materia prima de primera calidad.</p>
 
                 <hr>
-                <p><i class="fas fa-phone"></i> (+598) 94 123 123</p>
-                <p><i class="fas fa-envelope"></i> test@test.com</p>
+                <div class="row justify-content-between">
+                    <div class="col-sm-6">
+                        <p><i class="fas fa-user"></i> Daniel Balda - Director</p>
+                        <p><i class="fas fa-phone"></i><a href="tel:+59896189991"> (+598) 96 189 991 </a></p>
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:daniel@luxdesign.com.uy">
+                                daniel@luxdesign.com.uy
+                            </a></p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p><i class="fas fa-user"></i> Gonzalo Antoniazzi - Director</p>
+                        <p><i class="fas fa-phone"></i><a href="tel:+59895002269"> (+598) 95 002 269 </a></p>
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:daniel@luxdesign.com.uy">
+                                gonzalo@luxdesign.com.uy
+                            </a></p>
+                    </div>
+                </div>
             </div>
         </div>
 
