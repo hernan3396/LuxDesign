@@ -9,7 +9,7 @@ Trabajos
 <div class="container">
 
     @foreach ($categoria->trabajos as $trabajo)
-    <div class="" style="display:grid margin-bottom:5px">
+    <div style="display:grid; margin-bottom:5px">
         <a href="{{ Storage::disk('s3')->url('trabajos/' . $trabajo->imagen) }}" data-lightbox="roadtrip">
 
             <img class="card-img-top hover-shadow" src="{{ Storage::disk('s3')->url('trabajos/' . $trabajo->imagen) }}"
